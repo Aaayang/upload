@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图像裁剪</title>
+    <link rel="shortcut icon" href="/images/upload.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/jquery.Jcrop.css">
+    <!-- 自定义CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <!-- 图片来源：https://unsplash.com/photos/m663zRzRe40 -->
+    <div class="container">
+        <div class="jc-demo-box">
+            <img src="/upload/<%=imgName%>" id="target" alt="avatar" />
+            <div id="preview-pane">
+                <div class="preview-container">
+                    <img src="/upload/<%=imgName%>" class="jcrop-preview" alt="Preview" />
+                </div>
+            </div>
+        </div>
+        <button id="cutImage" class="upload-btn">裁剪</button>
+    </div>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.Jcrop.js"></script>
+    <!-- 自定义JS -->
+    <script src="/js/main.js"></script>
+    <script>
+        let imgname = "<%=imgName %>";
+        $("#cutImage").on("click", function () {
+            let w = parseInt($(".jcrop-holder>div:first").css("width")),
+                h = parseInt($(".jcrop-holder>div:first").css("height")),
+                x = parseInt($(".jcrop-holder>div:first").css("left")),
+                y = parseInt($(".jcrop-holder>div:first").css("top"));
+            $.get("/handleCut", {
+                imgname,
+                w,
+                h,
+                x,
+                y
+            }, function (data) {
+                if (data.ok) {
+                    window.location = "/";
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

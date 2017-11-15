@@ -1,0 +1,91 @@
+#preview-pane {
+    display: block;
+    position: absolute;
+    z-index: 20;
+    top: -20px;
+    right: -255px;
+    padding: 6px;
+    border: 1px rgba(0, 0, 0, .4) solid;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+}
+
+#preview-pane .preview-container {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+.container{
+    position: relative;
+    width: 580px;
+    height: 580px;
+    margin: 30px auto;
+    padding: 20px;
+    box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+}
+
+#cutImage{
+    position: absolute;
+    top: 0;
+    left: -108px;
+    display: block;
+}
+
+
+/* 外框 */
+.upload-con {
+    width: 488px;
+    text-align: center;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.avatar {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+    position: relative;
+    z-index: 3;
+}
+
+/* 文件域 */
+.avatar input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+}
+
+/* 显示上传文件名 */
+.upload-input {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: #554747;
+}
+
+/* 提交按钮 */
+.upload-btn {
+    cursor: pointer;
+    background-color: #3bb3e0;
+    border: none;
+    font-size: 14px;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 30px;
+    background-image: -webkit-linear-gradient(bottom, rgb(44, 160, 202) 0%, rgb(62, 184, 229) 100%);
+    border-radius: 5px;
+    box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #156785, 0px 10px 5px #999;
+    display: none;
+}

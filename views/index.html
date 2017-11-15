@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/images/upload.ico" type="image/x-icon">
+    <title>上传头像</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <div class="upload-con">
+        <!-- enctype的写法是配合formidable完成图片上传 -->
+        <form action="/upload" enctype="multipart/form-data" method="post">
+            <div class="avatar">
+                <!-- 头像地址 -->
+                <img src="/upload/<%=imgName%>" alt="">
+                <!-- 注意头像上面覆盖的有一个可以点击input上传框 -->
+                <!-- 注意最好不要这样写accept="image/*"，我的chrome58.0.3029.110会出现弹出框延迟好久才出现 -->
+                <input type="file" id="fileInput" name="upload" accept="image/jpg,image/jpeg,image/png">
+            </div>
+            <!-- 头像名字 -->
+            <div id="uploadInput" class="upload-input"><%=imgName%></div>
+            <input type="submit" class="upload-btn" id="uploadBtn">
+        </form>
+    </div>
+    <script src="/js/jquery.min.js"></script>
+    <script>
+        // 默认文件名
+        let fileName = "<%=imgName%>";
+
+        $("#fileInput").on("change", function () {
+            let filePath = $(this).val();
+            // 当上传文件名不为空时显示上传按钮
+            if (filePath !== "") {
+                $("#uploadBtn").show();
+                let fileName = filePath.substring(filePath.lastIndexOf("\\") + 1, filePath.length);
+                $("#uploadInput").html(fileName);
+            }
+        });
+    </script>
+</body>
+
+</html>
